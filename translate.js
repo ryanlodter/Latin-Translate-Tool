@@ -13,7 +13,12 @@ function parseStringToArray() {
 		if (c == " " || c == ""){
 			result.push(word);
 			word = "";
-		} else {
+		} else if (i == input.length - 1) {
+			word += c;
+			result.push(word);
+			word = "";
+		}
+		else{
 			word += c;
 		}
 	}

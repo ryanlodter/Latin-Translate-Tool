@@ -5,7 +5,14 @@ function setInput(){
 	input = document.getElementsByName("input")[0].value;
 }
 
+function normalizeInput() {
+	input = input.toLowerCase();
+	input = input.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+	input = input.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+}
+
 function parseStringToArray() {
+	normalizeInput();
 	var result = [];
 	var word = "";
 	for (var i = 0; i < input.length; i++){

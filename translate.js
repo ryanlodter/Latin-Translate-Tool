@@ -13,23 +13,7 @@ function normalizeInput() {
 
 function parseStringToArray() {
 	normalizeInput();
-	var result = [];
-	var word = "";
-	for (var i = 0; i < input.length; i++){
-		var c = input.charAt(i);
-		if (c == " " || c == ""){
-			result.push(word);
-			word = "";
-		} else if (i == input.length - 1) {
-			word += c;
-			result.push(word);
-			word = "";
-		}
-		else{
-			word += c;
-		}
-	}
-	return result;
+	return input.split(" ");
 }
 
 function addLinks() {

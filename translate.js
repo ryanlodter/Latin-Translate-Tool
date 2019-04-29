@@ -24,7 +24,7 @@ function addLinks() {
 	var words = parseStringToArray();
 	var result = "";
 	for (let word of words) {
-		result += "<a href= \"https://en.wiktionary.org/wiki/" + word + "#Latin\" target=\"none\">" + word + " </a>";
+		result += "<a href= \"https://en.wiktionary.org/wiki/" + word + "#Latin\" target=\"none\">" + word + "</a> ";
 	}
 	return result;
 }

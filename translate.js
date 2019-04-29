@@ -1,6 +1,5 @@
 var input = "";
 var output = "";
-var normalizedInput = "";
 
 function setInput(){
 	input = document.getElementById("input").value;
@@ -28,10 +27,11 @@ function hasNumber(string) {
 
 function addLinks() {
 	var lines = separateLines();
-	var result = "";
+	var result = "<pre>";
 	for (let i = 0; i < lines.length; i++){
-		var originalWords = lines[i].split(" ");
-		var normalizedWords = normalizeAndParseToArray(lines[i]);
+		curLine = lines[i];
+		var originalWords = curLine.split(" ");
+		var normalizedWords = normalizeAndParseToArray(curLine);
 		for (let j = 0; j < originalWords.length; j++) {
 			normalizedWord = normalizedWords[j];
 			originalWord = originalWords[j];
@@ -43,6 +43,7 @@ function addLinks() {
 		}
 		result += "<br/>";
 	}
+	result += "</pre>";
 	return result;
 }
 

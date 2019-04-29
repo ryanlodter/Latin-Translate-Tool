@@ -1,33 +1,38 @@
 var input = "";
 var output = "";
+var normalizedInput = "";
 
 function setInput(){
-	input = document.getElementsByName("input")[0].value;
+	input = document.getElementById("input").value;
 }
 
 function normalizeInput() {
-	input = input.toLowerCase();
-	input = input.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-	input = input.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+	normalizedInput = input;
+	normalizedInput = normalizedInput.toLowerCase();
+	normalizedInput = normalizedInput.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+	normalizedInput = normalizedInput.replace(/[.,?!\/#!$%\^&\*;:{}=\-_`~()]/g,"");
 }
 
 function parseStringToArray() {
 	normalizeInput();
-	return input.split(" ");
+	return normalizedInput.split(" ");
 }
 
 function addLinks() {
-	var words = parseStringToArray();
+	var originalWords = input.split(" ");
+	var normalizedWords = parseStringToArray();
 	var result = "";
-	for (let word of words) {
-		result += "<a href= \"https://en.wiktionary.org/wiki/" + word + "#Latin\" target=\"none\">" + word + "</a> ";
+	for (let i = 0; i < originalWords.length; i++) {
+		normalizedWord = normalizedWords[i];
+		originalWord = originalWords[i];
+		result += "<a href= \"https://en.wiktionary.org/wiki/" + normalizedWord + "#Latin\" target=\"none\">" + originalWord + "</a> ";
 	}
 	return result;
 }
 
 function setOutput() {
 	output = addLinks();
-	document.getElementById("output").innerHTML = output;
+	document.getElementById("formatedOutput").innerHTML = output;
 }
 
 function convert(){

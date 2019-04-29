@@ -2,14 +2,14 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>My Web Page</title>
+		<title>Latin Text Converter</title>
 		<script src="translate.js"></script>
 	</head>
 	<body>
 		<form>
-			Input: <input type="text" name="input">
-			<input type="button" onclick="convert()" value="Click me" />
+			Input: <textarea id="input" type="text" name="input"></textarea>
+			<input type="button" onclick="convert()" value="Convert" />
 		</form>
-		<h1><p id="output"></p></h1>
+		<h1><p id="formatedOutput"></p></h1>
 	</body>
 </html>

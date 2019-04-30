@@ -12,7 +12,7 @@ function normalize(line) {
 	normalized = line;
 	normalized = normalized.toLowerCase();
 	normalized = normalized.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-	normalized = normalized.replace(/[.,?!\/#!$%\^&\*;:{}=\-_`~()"]/g,"");
+	normalized = normalized.replace(/[.,?!\/#!$%\^&\*;:{}=\-_`'~()"]/g,"");
 	return normalized;
 }
 

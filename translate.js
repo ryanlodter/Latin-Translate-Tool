@@ -17,7 +17,27 @@ function normalize(line) {
 }
 
 function normalizeAndParseToArray(line) {
-	return normalize(line).split(" ");
+	var result = normalize(line).split(" ");
+	
+	var exceptions = ["simulatque", "atque", "adque", "namque", "quisque", "quaeque", "quodque", "cuiusque", "cujusque", "cuique", "quemque", "quamque", "quidque", "quoque", "quaque", "quoque", "quique", "quaeque", "quorumque", "quarumque", "quorumque", "quibusque", "quosque", "quasque", "quaeque", "quibusque"]
+	for (var i = 0; i < result.length; i++){
+		var word = result[i];
+		if (word.length > 2){
+			var ending = word.substring(word.length -  2, word.length);
+			if (ending === "ve" || ending === "ne"){
+				result[i] = word.substring(0, word.length - 2);
+			}
+		}
+		if(!exceptions.includes(word)){
+			if(word.length > 3){
+				var ending = word.substring(word.length - 3, word.length);
+				if (ending === "que") {
+					result[i] = word.substring(0, word.length - 3);
+				}
+			}
+		}
+	}
+	return result;
 }
 
 function hasNumber(string) {

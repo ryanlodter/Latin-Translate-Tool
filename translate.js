@@ -1,5 +1,4 @@
 var input = "";
-var output = "";
 
 function setInput(){
 	input = document.getElementById("input").value;
@@ -13,7 +12,7 @@ function normalize(line) {
 	normalized = line;
 	normalized = normalized.toLowerCase();
 	normalized = normalized.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-	normalized = normalized.replace(/[.,?!\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+	normalized = normalized.replace(/[.,?!\/#!$%\^&\*;:{}=\-_`~()"]/g,"");
 	return normalized;
 }
 
@@ -27,7 +26,7 @@ function hasNumber(string) {
 
 function addLinks() {
 	var lines = separateLines();
-	var result = "<pre>";
+	var result = "<pre id=\"formatedOutput\" style=\"width: 100%; white-space: pre-wrap;\">";
 	for (let i = 0; i < lines.length; i++){
 		curLine = lines[i];
 		var originalWords = curLine.split(" ");
@@ -48,8 +47,8 @@ function addLinks() {
 }
 
 function setOutput() {
-	output = addLinks();
-	document.getElementById("formatedOutput").innerHTML = output;
+	var output = addLinks();
+	document.getElementById("output").innerHTML = output;
 }
 
 function convert(){

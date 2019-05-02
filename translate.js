@@ -1,4 +1,5 @@
 var input = "";
+var normalizedList = [];
 
 function setInput(){
 	input = document.getElementById("input").value;
@@ -19,7 +20,11 @@ function normalize(line) {
 function normalizeAndParseToArray(line) {
 	var result = normalize(line).split(" ");
 	
-	var exceptions = ["simulatque", "atque", "adque", "namque", "quisque", "quaeque", "quodque", "cuiusque", "cujusque", "cuique", "quemque", "quamque", "quidque", "quoque", "quaque", "quoque", "quique", "quaeque", "quorumque", "quarumque", "quorumque", "quibusque", "quosque", "quasque", "quaeque", "quibusque"]
+	var exceptions = ["simulatque", "atque", "adque", "namque", "undique", "quisque", 
+		"quaeque", "quodque", "cuiusque", "cujusque", "cuique", "quemque", 
+		"quamque", "quidque", "quoque", "quaque", "quoque", "quique", "quaeque", 
+		"quorumque", "quarumque", "quorumque", "quibusque", "quosque", "quasque", 
+		"quaeque", "quibusque"];
 	for (var i = 0; i < result.length; i++){
 		var word = result[i];
 		if (word.length > 2){
@@ -55,7 +60,11 @@ function addLinks() {
 			normalizedWord = normalizedWords[j];
 			originalWord = originalWords[j];
 			if (!hasNumber(normalizedWord)){
-				result += "<a href= \"https://en.wiktionary.org/wiki/" + normalizedWord + "#Latin\" target=\"none\">" + originalWord + "</a> ";
+				var address = "<a href= \"https://en.wiktionary.org/wiki/" + normalizedWord + "#Latin\" target=\"none\">" + originalWord + "</a> ";
+				result += address;
+				if(!normalizedList.includes(normalizedWord)){
+					normalizedList.push(normalizedWord);
+				}
 			} else {
 				result += originalWord + " ";
 			}
@@ -66,9 +75,23 @@ function addLinks() {
 	return result;
 }
 
+function createVocabList(){
+	var result = "";
+	normalizedList.sort();
+	for (let i = 0; i < normalizedList.length; i++){
+		var normalizedWord = normalizedList[i];
+		if(!(normalizedWord == "")){
+			result += "<li><a href= \"https://en.wiktionary.org/wiki/" + normalizedWord + "#Latin\" target=\"none\">" + normalizedWord + "</a></li>";
+		}
+	}
+	return result;
+}
+
 function setOutput() {
 	var output = addLinks();
+	var vocab = createVocabList();
 	document.getElementById("output").innerHTML = output;
+	document.getElementById("vocab").innerHTML = vocab;
 }
 
 function convert(){

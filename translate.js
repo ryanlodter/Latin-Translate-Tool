@@ -12,15 +12,16 @@ function separateLines(){
 function normalize(line) {
 	normalized = line;
 	normalized = normalized.toLowerCase();
+	normalized = normalized.replace('—', " ");
 	normalized = normalized.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-	normalized = normalized.replace(/[.,?!\/#!$%\^&\*;:{}=\-_`'~()"]/g,"");
+	normalized = normalized.replace(/[.,?!\/#!$%\^&\*;:{}=\-_`'~()"\[\]]/g,"");
 	return normalized;
 }
 
 function normalizeAndParseToArray(line) {
 	var result = normalize(line).split(" ");
 	
-	var exceptions = ["simulatque", "atque", "adque", "namque", "undique", "quisque", 
+	var exceptions = ["simulatque", "atque", "adque", "namque", "undique", "usque", "quisque", 
 		"quaeque", "quodque", "cuiusque", "cujusque", "cuique", "quemque", 
 		"quamque", "quidque", "quoque", "quaque", "quoque", "quique", "quaeque", 
 		"quorumque", "quarumque", "quorumque", "quibusque", "quosque", "quasque", 

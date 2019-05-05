@@ -6,7 +6,7 @@ body {
 
 textarea {
 	background-color: rgb(240,240,240);
-	height: 250px;
+	height: 20vh;
 	width: 50%;
 }
 
@@ -24,6 +24,10 @@ a:hover, a:active {
 	font-size: 25px;
 	margin: 0px;
 	padding: 0px;
+}
+
+#input {
+	
 }
 
 #formatedOutput {

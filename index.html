@@ -8,12 +8,10 @@
 	</head>
 	<body>
 		<form>
-			Input: <textarea id="input" type="text" name="input"></textarea>
-			<input type="button" onclick="convert()" value="Convert" />
+			<p id="inputTitle">Type or paste Latin text here, and select words for definitions:</p> 
+			<br/>
+			<textarea id="input" type="text" name="input" oninput = "convert()"></textarea>
 		</form>
-		<h1><p id="output"></p></h1>
-		<div>
-			Vocab:<ol id="vocab"></ol>
-		</div>
+		<p id="output"></p>
 	</body>
 </html>

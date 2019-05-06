@@ -1,13 +1,17 @@
+//input string
 var input = "";
 
+//gets input from the input field
 function setInput(){
 	input = document.getElementById("input").value;
 }
 
+//splits input into an array by lines
 function separateLines(){
 	return input.split("\n");
 }
 
+//normalizes a string by converting to lowercase, replacing dashes with spaces, removing accents, and removing punctuation
 function normalize(line) {
 	normalized = line;
 	normalized = normalized.toLowerCase();
@@ -17,6 +21,7 @@ function normalize(line) {
 	return normalized;
 }
 
+//splits line into an array by spaces, checks for -ve, -ne, and -que endings and removes them, excluding exeptions
 function normalizeAndParseToArray(line) {
 	var result = normalize(line).split(" ");
 	
@@ -25,6 +30,7 @@ function normalizeAndParseToArray(line) {
 		"quamque", "quidque", "quoque", "quaque", "quoque", "quique", "quaeque", 
 		"quorumque", "quarumque", "quorumque", "quibusque", "quosque", "quasque", 
 		"quaeque", "quibusque"];
+		
 	for (var i = 0; i < result.length; i++){
 		var word = result[i];
 		if (word.length > 2){
@@ -42,13 +48,16 @@ function normalizeAndParseToArray(line) {
 			}
 		}
 	}
+	
 	return result;
 }
 
+//returns boolean true if string contains a number
 function hasNumber(string) {
   return /\d/.test(string);
 }
 
+//returns string with each word linked to latin area of wikitionary using the normalized version of the word
 function addLinks() {
 	var lines = separateLines();
 	var result = "<pre id=\"formatedOutput\">";
@@ -72,11 +81,13 @@ function addLinks() {
 	return result;
 }
 
+//updates html file to contain linked words
 function setOutput() {
 	var output = addLinks();
 	document.getElementById("output").innerHTML = output;
 }
 
+//runs on input to text area
 function convert(){
 	setInput();
 	setOutput();

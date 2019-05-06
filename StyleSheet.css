@@ -6,15 +6,14 @@ body {
 	font-family: "Times New Roman", Times, serif;
 }
 
-form {
-	height: 35vh;
-	width: 50vw;
+body span{
+	display: block;
 }
 
 textarea {
 	background-color: rgb(240,240,240);
-	height: 75%;
-	width: 100%;
+	height: 25vh;
+	width: 50vw;
 }
 
 a:link, a:visited {
@@ -28,7 +27,7 @@ a:hover, a:active {
 }
 
 #inputTitle {
-	margin: 0px;
+	margin-bottom: 1vw;
 	padding: 0px;
 }
 

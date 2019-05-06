@@ -2,12 +2,19 @@
 body {
 	background-color: rgb(253,253,253);
 	margin: .75in;
+	font-size: 2vw;
+	font-family: "Times New Roman", Times, serif;
+}
+
+form {
+	height: 35vh;
+	width: 50vw;
 }
 
 textarea {
 	background-color: rgb(240,240,240);
-	height: 20vh;
-	width: 50%;
+	height: 75%;
+	width: 100%;
 }
 
 a:link, a:visited {
@@ -21,18 +28,14 @@ a:hover, a:active {
 }
 
 #inputTitle {
-	font-size: 25px;
 	margin: 0px;
 	padding: 0px;
 }
 
-#input {
-	
-}
-
 #formatedOutput {
 	width: 100%; 
+	margin-top: 2vw;
 	white-space: pre-wrap; 
+	font-size: 2vw;
 	font-family: "Times New Roman", Times, serif;
-	font-size: 25px;
 }

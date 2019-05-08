@@ -1,8 +1,7 @@
-
 body {
 	background-color: rgb(253,253,253);
 	margin: .75in;
-	font-size: 2vw;
+	font-size: 1.5vw;
 	font-family: "Times New Roman", Times, serif;
 }
 
@@ -35,6 +34,6 @@ a:hover, a:active {
 	width: 100%; 
 	margin-top: 2vw;
 	white-space: pre-wrap; 
-	font-size: 2vw;
+	font-size: 1.5vw;
 	font-family: "Times New Roman", Times, serif;
 }
